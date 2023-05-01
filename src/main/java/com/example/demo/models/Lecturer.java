@@ -1,8 +1,7 @@
 package com.example.demo.models;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -55,6 +54,7 @@ public class Lecturer {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@JsonIgnore
 	public List<Module> getModules() {
 		return modules;
 	}

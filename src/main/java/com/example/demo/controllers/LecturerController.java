@@ -6,10 +6,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,20 +18,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.demo.interfaces.LecturerRepository;
 import com.example.demo.models.Lecturer;
 import com.example.demo.models.Module;
 import com.example.demo.models.Student;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/lecturers")
 public class LecturerController {
 
     @Autowired
     private LecturerRepository lecturerRepository;
 
-    @GetMapping
+    @GetMapping("/lecturers")
     public ResponseEntity<List<Map<String, Object>>> getAllLecturers() {
         List<Lecturer> lecturers = lecturerRepository.findAll();
         List<Map<String, Object>> result = new ArrayList<>();
@@ -49,7 +48,7 @@ public class LecturerController {
         return ResponseEntity.ok(result);
     }
     
-    @PostMapping
+    @PostMapping("/lecturer")
     public ResponseEntity<Object> createLecturer(@RequestBody Lecturer lecturer) {
         try {
             // Ensure the Lecturer object does not contain an id
@@ -77,7 +76,7 @@ public class LecturerController {
         }
     }
     
-    @PutMapping("/{lid}")
+    @PutMapping("/lecturer/{lid}")
     public ResponseEntity<Lecturer> putLecturer(@PathVariable String lid, @RequestBody Lecturer updatedLecturer) {
         Optional<Lecturer> lecturerOptional = Optional.of(lecturerRepository.findByLid(lid));
         if (!lecturerOptional.isPresent()) {
@@ -95,7 +94,7 @@ public class LecturerController {
         return ResponseEntity.ok(lecturer);
     }
     
-    @GetMapping("/search")
+    @GetMapping("lecturer/search")
     public List<Lecturer> getLecturersByTaxBand(@RequestParam("taxBand") String taxBand) {
         return lecturerRepository.findByTaxBandNativeQuery(taxBand);
     }

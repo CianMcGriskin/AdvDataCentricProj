@@ -1,0 +1,24 @@
+<table>
+    <thead>
+      <tr>
+        <th>LID</th>
+        <th>Name</th>
+        <th>Tax Band</th>
+        <th>Salary Scale</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lecturer of lecturers">
+        <td>{{ lecturer.lid }}</td>
+        <td>{{ lecturer.name }}</td>
+        <td>{{ lecturer.taxBand }}</td>
+        <td>{{ lecturer.salaryScale }}</td>
+        <td><button (click)="updateLecturer(lecturer)">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+<a routerLink="/lecturers">View Lecturers</a><br>
+<a routerLink="/students">View Students</a>
+
+  

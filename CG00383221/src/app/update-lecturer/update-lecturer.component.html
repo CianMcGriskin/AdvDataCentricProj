@@ -1,0 +1,10 @@
+<div *ngIf="selectedLecturer">
+  <h2>{{ selectedLecturer.lid }}</h2>
+  <label>Name:</label>
+  <input type="text" [(ngModel)]="selectedLecturer.name"> <br>
+  <label>Tax Band:</label>
+  <input type="text" [(ngModel)]="selectedLecturer.taxBand"> <br>
+  <label>Salary Scale:</label>
+  <input type="number" [(ngModel)]="selectedLecturer.salaryScale"> <br>
+  <button (click)="updateLecturerInfo()">Update</button>
+</div>
