@@ -8,6 +8,7 @@ import { StudentsComponent } from './students/students.component';
 import { LecturersComponent } from './lecturers/lecturers.component';
 import { UpdateLecturerComponent } from './update-lecturer/update-lecturer.component';
 import { FormsModule } from '@angular/forms';
+import { UpdateStudentComponent } from './update-student/update-student.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     MainPageComponent,
     StudentsComponent,
     LecturersComponent,
-    UpdateLecturerComponent
+    UpdateLecturerComponent,
+    UpdateStudentComponent
   ],
   imports: [
     BrowserModule,

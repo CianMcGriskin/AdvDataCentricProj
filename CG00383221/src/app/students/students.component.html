@@ -1,1 +1,21 @@
-<p>students works!</p>
+<table>
+    <thead>
+      <tr>
+        <th>SID</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.sid }}</td>
+        <td>{{ student.name }}</td>
+        <td><button (click)="deleteStudent(student.sid)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+<a routerLink="/lecturers">View Lecturers</a><br>
+<a routerLink="/students">View Students</a>
+<p>{{ deleteError }}</p>
+
+  
